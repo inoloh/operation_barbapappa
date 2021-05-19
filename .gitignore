@@ -10,6 +10,12 @@ docker/workdir/
 docker/*.war
 docker/*.jar
 
+# ignore .idea
+.idea/
+
+# ignore DS_store
+.DS_Store
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
