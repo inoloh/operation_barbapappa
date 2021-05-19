@@ -1,0 +1,51 @@
+version: "2"
+
+services:
+  app:
+    image: wildfly-mysql:wildfly-${WILDFLY_VERSION}-mysql-${MYSQL_VERSION}
+    build:
+      context: .
+      network: host
+      args:
+        WILDFLY_VER: ${WILDFLY_VERSION}
+        MYSQL_CONNECTOR_VERSION: ${MYSQL_CONNECTOR_VERSION}
+    environment:
+      - WILDFLY_DEBUG=${WILDFLY_DEBUG}
+      - WILDFLY_USER=${WILDFLY_ADMIN_USER}
+      - WILDFLY_PASS=${WILDFLY_ADMIN_PASS}
+      - WILDFLY_APP_USER=${WILDFLY_APP_USER}
+      - WILDFLY_APP_USER=${WILDFLY_APP_PASS}
+      - DB_NAME=${MYSQL_DATABASE}
+      - DB_USER=${MYSQL_USER}
+      - DB_PASS=${MYSQL_PASSWORD}
+      - DB_URI=db:3306
+    depends_on:
+      - db
+    volumes:
+      - ${DEPLOYMENT_PATH}:/opt/jboss/wildfly/standalone/deployments/:rw
+      - ${INIT_PATH}:/opt/jboss/wildfly/customization/init.d
+    ports:
+      - "8080:8080" # application
+      - "9990:9990" # admin console
+      - "8787:8787" # java debug
+
+  db:
+    image: "mysql:${MYSQL_VERSION}"
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ${DATABASE_INIT_PATH}:/docker-entrypoint-initdb.d/ # init database
+      - ${DATABASE_DATA_PATH}:/var/lib/mysql/              # data storage
+    ports:
+      - "13306:3306"
+
+volumes:
+  db-data:
+    driver: local
+      
+networks:
+  default:
+    driver: bridge
