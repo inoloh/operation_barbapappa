@@ -16,6 +16,15 @@
         <maven.compiler.target>1.8</maven.compiler.target><!-- stod 1.8 här innan-->
         <maven.compiler.source>1.8</maven.compiler.source>
         <junit.version>5.7.0</junit.version>
+
+        <annotationProcessorPaths>
+            <path>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.20</version>
+            </path>
+        </annotationProcessorPaths>
+
     </properties>
 
     <dependencies>
@@ -42,7 +51,14 @@
             <artifactId>wildfly-client-all</artifactId>
             <version>23.0.1.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+            <scope>provided</scope>
+        </dependency>
         </dependencies>
+
 
     <build>
         <plugins>
