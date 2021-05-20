@@ -1,7 +1,9 @@
 package se.yrgo.client;
 
+import se.yrgo.domain.Animal;
 import se.yrgo.domain.Employee;
 import se.yrgo.service.ZooService;
+import se.yrgo.service.ZooServiceImpl;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -20,34 +22,20 @@ public class Main {
                 "org.wildfly.naming.client.WildFlyInitialContextFactory");
         jndiProperties.put(Context.PROVIDER_URL,"http-remoting://localhost:8080");
         jndiProperties.put("jboss.naming.client.ejb.context", true);
-        /*jndiProperties.put(Context.SECURITY_AUTHENTICATION, "simple");*/
-        jndiProperties.put(Context.SECURITY_PRINCIPAL, "appuser2");
-        jndiProperties.put(Context.SECURITY_CREDENTIALS, "password2!");
+        jndiProperties.put(Context.SECURITY_AUTHENTICATION, "simple");
+        jndiProperties.put(Context.SECURITY_PRINCIPAL, "appuser3");
+        jndiProperties.put(Context.SECURITY_CREDENTIALS, "password3!");
         System.out.println(jndiProperties);
 
         Context jndi = new InitialContext(jndiProperties);
-        ZooService service = (ZooService) jndi.lookup("operation_barbapppa-1.0-SNAPSHOT-war/ServiceImplementation!se.yrgo.service.ManagementService");
+        ZooService service = (ZooService) jndi.lookup("operation_barbapappa-1.0-SNAPSHOT-war/ZooServiceImpl!se.yrgo.service.ZooService");
 
-        Employee emp1 = new Employee("Andreas","Green","Designer",2700);
-        Employee emp2 = new Employee("Rikard","Blue","Tester",1800);
-        Employee emp3 = new Employee("Ronald","Black","Programmer",2900);
-        Employee emp4 = new Employee("Eric","Black","Manager",2000);
+      /*  ZooServiceImpl service = new ZooServiceImpl();*/
 
-        /*service.registerEmployee(emp1);
-        service.registerEmployee(emp2);
-        service.registerEmployee(emp3);
-        service.registerEmployee(emp4);
+        List<Animal> ListOfAnimals = service.showAllAnimals();
 
-        List<Employee> employees = service.searchByLastname("Black");
+        System.out.println(ListOfAnimals);
 
-        System.out.println(employees
-        );
-
-        List<Employee> employees2 = service.getAllEmployees();
-
-        for (Employee employee : employees2) {
-            System.out.println(employee);
-        }*/
     }
 }
 

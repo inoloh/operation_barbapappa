@@ -1,22 +1,12 @@
 package se.yrgo.dataaccess;
 
 import se.yrgo.domain.Animal;
-import se.yrgo.domain.Employee;
 
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Alternative;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Stateless
-public class DataAccessImplementation implements DataAccess {
-    @PersistenceContext
-    private EntityManager em;
-
-
+public class DataAccessImplementationTest implements DataAccess{
     @Override
     public void deleteAnimal(Animal animal) {
 

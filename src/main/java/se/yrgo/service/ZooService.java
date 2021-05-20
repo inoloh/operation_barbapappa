@@ -9,9 +9,9 @@ import java.util.List;
 @Remote
 public interface ZooService {
     public void executeAnimal(Animal animal);
-    public void emptyFreezer();
+    public void removeAnimalFromFreezer(Animal animal);
     public void putInFreezer(Animal animal);
-    public void buyAnimal();
+    public void buyAnimal(Animal animal);
     public List<Animal> showAllAnimals();
     public List<Animal> showSickAnimals();
 }

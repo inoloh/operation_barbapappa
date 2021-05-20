@@ -1,6 +1,7 @@
 package se.yrgo.service;
 
 import se.yrgo.dataaccess.DataAccess;
+
 import se.yrgo.domain.Animal;
 
 import javax.ejb.Stateless;
@@ -19,9 +20,10 @@ public class ZooServiceImpl implements ZooService {
     }
 
     @Override
-    public void emptyFreezer() {
+    public void removeAnimalFromFreezer(Animal animal) {
 
     }
+
 
     @Override
     public void putInFreezer(Animal animal) {
@@ -29,14 +31,12 @@ public class ZooServiceImpl implements ZooService {
     }
 
     @Override
-    public void buyAnimal() {
+    public void buyAnimal(Animal animal) {
 
     }
 
     @Override
-    public List<Animal> showAllAnimals() {
-        return null;
-    }
+    public List<Animal> showAllAnimals() { return dao.findAllAnimals(); }
 
     @Override
     public List<Animal> showSickAnimals() {
