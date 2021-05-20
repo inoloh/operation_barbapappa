@@ -3,9 +3,11 @@ package se.yrgo.dataaccess;
 import se.yrgo.domain.Animal;
 
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Default;
 import java.util.*;
 
 @Stateless
+@Default
 public class DataAccessImplementationTest implements DataAccess{
     @Override
     public void deleteAnimal(Animal animal) {

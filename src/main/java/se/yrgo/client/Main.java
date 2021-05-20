@@ -23,8 +23,8 @@ public class Main {
         jndiProperties.put(Context.PROVIDER_URL,"http-remoting://localhost:8080");
         jndiProperties.put("jboss.naming.client.ejb.context", true);
         jndiProperties.put(Context.SECURITY_AUTHENTICATION, "simple");
-        jndiProperties.put(Context.SECURITY_PRINCIPAL, "appuser3");
-        jndiProperties.put(Context.SECURITY_CREDENTIALS, "password3!");
+        jndiProperties.put(Context.SECURITY_PRINCIPAL, "appuser2");
+        jndiProperties.put(Context.SECURITY_CREDENTIALS, "password2!");
         System.out.println(jndiProperties);
 
         Context jndi = new InitialContext(jndiProperties);

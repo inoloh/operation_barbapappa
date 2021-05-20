@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
+@Alternative
 public class DataAccessImplementation implements DataAccess {
     @PersistenceContext
     private EntityManager em;
