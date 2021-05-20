@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: com.helena.client.Main
+Main-Class: se.yrgo.client.Main
 

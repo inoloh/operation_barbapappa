@@ -33,7 +33,7 @@ public class Main {
         Employee emp3 = new Employee("Ronald","Black","Programmer",2900);
         Employee emp4 = new Employee("Eric","Black","Manager",2000);
 
-        service.registerEmployee(emp1);
+        /*service.registerEmployee(emp1);
         service.registerEmployee(emp2);
         service.registerEmployee(emp3);
         service.registerEmployee(emp4);
@@ -47,7 +47,7 @@ public class Main {
 
         for (Employee employee : employees2) {
             System.out.println(employee);
-        }
+        }*/
     }
 }
 
