@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 @Stateless
-public class ServiceImplementation implements ManagementService {
+public class ServiceImplementation implements AnimalService {
 
     @Inject
     private DataAccess dao;

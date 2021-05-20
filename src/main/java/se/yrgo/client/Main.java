@@ -1,7 +1,7 @@
 package se.yrgo.client;
 
 import se.yrgo.domain.Employee;
-import se.yrgo.service.ManagementService;
+import se.yrgo.service.AnimalService;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -26,7 +26,7 @@ public class Main {
         System.out.println(jndiProperties);
 
         Context jndi = new InitialContext(jndiProperties);
-        ManagementService service = (ManagementService) jndi.lookup("operation_barbapppa-1.0-SNAPSHOT-war/ServiceImplementation!se.yrgo.service.ManagementService");
+        AnimalService service = (AnimalService) jndi.lookup("operation_barbapppa-1.0-SNAPSHOT-war/ServiceImplementation!se.yrgo.service.ManagementService");
 
         Employee emp1 = new Employee("Andreas","Green","Designer",2700);
         Employee emp2 = new Employee("Rikard","Blue","Tester",1800);
