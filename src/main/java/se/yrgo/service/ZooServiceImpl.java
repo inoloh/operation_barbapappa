@@ -15,8 +15,8 @@ public class ZooServiceImpl implements ZooService {
     private DataAccess dao;
 
     @Override
-    public void executeAnimal(Animal animal) {
-
+    public void executeAnimal(int animalId) {
+        dao.deleteAnimal(animalId);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ZooServiceImpl implements ZooService {
 
     @Override
     public void buyAnimal(Animal animal) {
-
+    dao.insertAnimal(animal);
     }
 
     @Override
@@ -40,6 +40,11 @@ public class ZooServiceImpl implements ZooService {
 
     @Override
     public List<Animal> showSickAnimals() {
-        return null;
+        return dao.findSickAnimals();
+    }
+
+    @Override
+    public Animal getAnimalById(int animalId) {
+        return dao.findAnimalById(animalId);
     }
 }

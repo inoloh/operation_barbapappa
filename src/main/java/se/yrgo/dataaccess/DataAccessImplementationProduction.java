@@ -5,6 +5,7 @@ import se.yrgo.domain.Employee;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
+import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -12,14 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
-@Alternative
-public class DataAccessImplementation implements DataAccess {
+@Default
+public class DataAccessImplementationProduction implements DataAccess {
     @PersistenceContext
     private EntityManager em;
 
 
     @Override
-    public void deleteAnimal(Animal animal) {
+    public void deleteAnimal(int animalId) {
+       Animal toKill = em.find(Animal.class, animalId);
+        em.remove(toKill);
 
     }
 
@@ -35,23 +38,22 @@ public class DataAccessImplementation implements DataAccess {
 
     @Override
     public void insertAnimal(Animal animal) {
-
+        em.persist(animal);
     }
 
     @Override
     public List<Animal> findAllAnimals() {
-        List<Animal> theAnimals = new ArrayList<>();
-        theAnimals.add(new Animal("Bubba",3,"Sulphur-Crested Cockatoo","fine","2019-04-12"));
-        theAnimals.add(new Animal("Helena",3,"Shaggy Bird","fine","2019-04-12"));
-        theAnimals.add(new Animal("Henke",3,"Mediterranean monk seal","fine","2019-04-12"));
-        theAnimals.add(new Animal("Lukas",3,"Laptev Walrus","fine","2019-04-12"));
-        theAnimals.add(new Animal("Rasmus",3,"Sulphur-Crested Cockatoo","fine","2019-04-12"));
+        return em.createQuery("SELECT animal FROM Animal animal").getResultList();
 
-        return theAnimals;
     }
 
     @Override
     public List<Animal> findSickAnimals() {
-        return null;
+        return em.createQuery("SELECT animal FROM Animal animal WHERE animal.healthStatus = 'sick'").getResultList();
+    }
+
+    @Override
+    public Animal findAnimalById(int animalId) {
+        return em.find(Animal.class, animalId);
     }
 }
