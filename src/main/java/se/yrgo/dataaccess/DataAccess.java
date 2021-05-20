@@ -8,10 +8,11 @@ import java.util.List;
 
 @Local
 public interface DataAccess {
-    public void deleteAnimal(Animal animal);
+    public void deleteAnimal(int animalId);
     public void deleteAnimalFromFreezer(Animal animal);
     public void insertToFreezer(Animal animal);
     public void insertAnimal(Animal animal);
     public List<Animal> findAllAnimals();
     public List<Animal> findSickAnimals();
+    public Animal findAnimalById(int animalId);
 }
