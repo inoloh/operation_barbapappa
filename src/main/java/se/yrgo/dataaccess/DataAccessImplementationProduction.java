@@ -58,4 +58,12 @@ public class DataAccessImplementationProduction implements DataAccess {
     public void insertZone(Zone zone) {
         em.persist(zone);
     }
+
+    @Override
+    public void insertAnimalToZone(int animalId, int zoneId) {
+        Animal animal = em.find(Animal.class, animalId );
+        Zone zon = em.find(Zone.class,zoneId);
+        zon.addAnimals(animal);
+        em.persist(zon);
+    }
 }

@@ -22,14 +22,14 @@ public class Main {
         jndiProperties.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
         jndiProperties.put("jboss.naming.client.ejb.context", true);
         jndiProperties.put(Context.SECURITY_AUTHENTICATION, "simple");
-        jndiProperties.put(Context.SECURITY_PRINCIPAL, "appuser2");
-        jndiProperties.put(Context.SECURITY_CREDENTIALS, "password2!");
+        jndiProperties.put(Context.SECURITY_PRINCIPAL, "appuser3");
+        jndiProperties.put(Context.SECURITY_CREDENTIALS, "password3!");
         System.out.println(jndiProperties);
 
         Context jndi = new InitialContext(jndiProperties);
         ZooService service = (ZooService) jndi.lookup("operation_barbapappa-1.0-SNAPSHOT-war/ZooServiceImpl!se.yrgo.service.ZooService");
 
-        Animal jeff = new Animal("Jeff", 4, "Hawaiian monk seal", HealthStatus.SICK, "1984-04-12");
+       /* Animal jeff = new Animal("Jeff", 4, "Hawaiian monk seal", HealthStatus.SICK, "1984-04-12");
         Animal nigel = new Animal("Nigel", 4, "Hawaiian monk seal", HealthStatus.HEALTHY, "1984-04-12");
         Animal esteban = new Animal("Esteban", 4, "Hawaiian monk seal", HealthStatus.SICK, "1984-04-12");
 
@@ -38,7 +38,9 @@ public class Main {
         service.buyAnimal(esteban);
 
         Zone flood = new Zone("Flood");
-        service.addZone(flood);
+        service.addZone(flood);*/
+
+        service.addAnimalToZone(9,12);
 
         // flood.addAnimals(jeff);
         // flood.addAnimals(nigel);

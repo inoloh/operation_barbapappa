@@ -6,6 +6,7 @@ import javax.ws.rs.Produces;
 
 @Path("/fantastic-world")
 public class HelloResource {
+
     @GET
     @Produces("text/plain")
     public String hello() {

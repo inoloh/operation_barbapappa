@@ -16,4 +16,5 @@ public interface ZooService {
     public List<Animal> showSickAnimals();
     public Animal getAnimalById(int animalId);
     public void addZone(Zone zone);
+    public void addAnimalToZone(int animalId,int zoneId);
 }

@@ -16,4 +16,5 @@ public interface DataAccess {
     public List<Animal> findSickAnimals();
     public Animal findAnimalById(int animalId);
     public void insertZone(Zone zone);
+    public void insertAnimalToZone(int animalId,int zoneId);
 }

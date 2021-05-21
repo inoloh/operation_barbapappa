@@ -58,4 +58,9 @@ public class DataAccessImplementationTest implements DataAccess {
     @Override
     public void insertZone(Zone zone) {
     }
+
+    @Override
+    public void insertAnimalToZone(int animalId, int zoneId) {
+
+    }
 }
