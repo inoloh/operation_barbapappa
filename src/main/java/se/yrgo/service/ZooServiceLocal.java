@@ -11,7 +11,7 @@ import java.util.List;
 public interface ZooServiceLocal {
     public void executeAnimal(int animalId);
     public void removeAnimalFromFreezer(Animal animal);
-    public void putInFreezer(Animal animal);
+    public void putInFreezer(int animalId);
     public void buyAnimal(Animal animal);
     public List<Animal> showAllAnimals();
     public List<Animal> showSickAnimals();

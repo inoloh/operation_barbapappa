@@ -33,9 +33,9 @@ public class Main {
         Animal nigel = new Animal("Nigel", 4, "Hawaiian monk seal", HealthStatus.HEALTHY, "1984-04-12");
         Animal esteban = new Animal("Esteban", 4, "Hawaiian monk seal", HealthStatus.SICK, "1984-04-12");
 
-        service.buyAnimal(jeff);
+      /*  service.buyAnimal(jeff);
         service.buyAnimal(nigel);
-        service.buyAnimal(esteban);
+        service.buyAnimal(esteban);*/
 
     /*    Zone freezer = new Zone("Freezer");
         service.addZone(freezer);*/
@@ -48,12 +48,18 @@ public class Main {
         // flood.addAnimals(nigel);
         // flood.addAnimals(esteban);
 
+
+
 //        Animal animal = service.getAnimalById(2);
 //        System.out.println("alive");
 //        System.out.println(animal);
 //        service.executeAnimal(3);
  //       service.executeAnimal(5);
 //        System.out.println("dead");x
+
+
+
+          /*  service.putInFreezer(9);*/
 
         List<Animal>sickAnimals = service.showSickAnimals();
 

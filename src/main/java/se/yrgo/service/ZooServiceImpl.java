@@ -26,8 +26,8 @@ public class ZooServiceImpl implements ZooService, ZooServiceLocal {
     }
 
     @Override
-    public void putInFreezer(Animal animal) {
-
+    public void putInFreezer(int animalId) {
+        dao.insertToFreezer(animalId);
     }
 
     @Override

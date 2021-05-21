@@ -15,8 +15,8 @@ public class Zone implements Serializable {
     @Getter @Setter private int id;
     @Getter @Setter private String name;
 
-    @OneToMany( targetEntity=Animal.class )
-    // @JoinColumn(name = "Zone_FK")
+    @ManyToOne( targetEntity=Animal.class )
+    @JoinColumn(name = "Zone_FK")
     @Getter @Setter private List listOfAnimals;
 
     public Zone() {

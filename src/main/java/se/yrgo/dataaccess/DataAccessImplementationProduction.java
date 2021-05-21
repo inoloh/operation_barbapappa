@@ -33,7 +33,9 @@ public class DataAccessImplementationProduction implements DataAccess {
 
         Animal animal = em.find(Animal.class, animalId);
         Zone freez = em.find(Zone.class,16);
-
+        em.createQuery("DELETE from Zone zone where zone.listOfAnimalId = :Id ").setParameter("Id",animalId);
+     /*   freez.addAnimals(animal);
+        em.persist(freez);*/
         //Tabort från zon
         //lägga till i frys
     }
