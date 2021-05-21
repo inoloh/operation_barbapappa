@@ -1,7 +1,7 @@
 package se.yrgo.service;
 
 import se.yrgo.domain.Animal;
-import se.yrgo.domain.Employee;
+import se.yrgo.domain.Zone;
 
 import javax.ejb.Remote;
 import java.util.List;
@@ -15,4 +15,5 @@ public interface ZooService {
     public List<Animal> showAllAnimals();
     public List<Animal> showSickAnimals();
     public Animal getAnimalById(int animalId);
+    public void addZone(Zone zone);
 }

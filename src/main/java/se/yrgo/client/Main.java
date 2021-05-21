@@ -1,9 +1,9 @@
 package se.yrgo.client;
 
 import se.yrgo.domain.Animal;
-import se.yrgo.domain.Employee;
+import se.yrgo.domain.HealthStatus;
+import se.yrgo.domain.Zone;
 import se.yrgo.service.ZooService;
-import se.yrgo.service.ZooServiceImpl;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -29,18 +29,29 @@ public class Main {
         Context jndi = new InitialContext(jndiProperties);
         ZooService service = (ZooService) jndi.lookup("operation_barbapappa-1.0-SNAPSHOT-war/ZooServiceImpl!se.yrgo.service.ZooService");
 
+        Animal jeff = new Animal("Jeff", 4, "Hawaiian monk seal", HealthStatus.SICK, "1984-04-12");
+        Animal nigel = new Animal("Nigel", 4, "Hawaiian monk seal", HealthStatus.HEALTHY, "1984-04-12");
+        Animal esteban = new Animal("Esteban", 4, "Hawaiian monk seal", HealthStatus.SICK, "1984-04-12");
 
-//        service.buyAnimal(new Animal("Jeff", 4, "Hawaiian monk seal", "sick", "1984-04-12"));
-//        service.buyAnimal(new Animal("Nigel", 4, "Hawaiian monk seal", "healthy AF", "1984-04-12"));
-//        service.buyAnimal(new Animal("Esteban", 4, "Hawaiian monk seal", "sick", "1984-04-12"));
+        service.buyAnimal(jeff);
+        service.buyAnimal(nigel);
+        service.buyAnimal(esteban);
+
+        Zone flood = new Zone("Flood");
+        service.addZone(flood);
+
+        // flood.addAnimals(jeff);
+        // flood.addAnimals(nigel);
+        // flood.addAnimals(esteban);
+
 //        Animal animal = service.getAnimalById(2);
 //        System.out.println("alive");
 //        System.out.println(animal);
-        service.executeAnimal(3);
+//        service.executeAnimal(3);
  //       service.executeAnimal(5);
-//        System.out.println("dead");
+//        System.out.println("dead");x
 
-            List<Animal>sickAnimals = service.showSickAnimals();
+        List<Animal>sickAnimals = service.showSickAnimals();
 
 
 //        List<Animal> allAnimals = service.showAllAnimals();

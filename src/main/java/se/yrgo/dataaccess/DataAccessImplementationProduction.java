@@ -1,15 +1,12 @@
 package se.yrgo.dataaccess;
 
 import se.yrgo.domain.Animal;
-import se.yrgo.domain.Employee;
+import se.yrgo.domain.Zone;
 
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Alternative;
 import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -49,11 +46,16 @@ public class DataAccessImplementationProduction implements DataAccess {
 
     @Override
     public List<Animal> findSickAnimals() {
-        return em.createQuery("SELECT animal FROM Animal animal WHERE animal.healthStatus = 'sick'").getResultList();
+        return em.createQuery("SELECT animal FROM Animal animal WHERE animal.healthStatus = 1").getResultList();
     }
 
     @Override
     public Animal findAnimalById(int animalId) {
         return em.find(Animal.class, animalId);
+    }
+
+    @Override
+    public void insertZone(Zone zone) {
+        em.persist(zone);
     }
 }
