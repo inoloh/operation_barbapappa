@@ -25,12 +25,12 @@ public class DataAccessImplementationProduction implements DataAccess {
 
     @Override
     public void deleteAnimalFromFreezer(Animal animal) {
-
+    // TODO implement deleteAnimalFromFreezer
     }
 
     @Override
     public void insertToFreezer(Animal animal) {
-
+    //TODO implement insertToFreezer
     }
 
     @Override

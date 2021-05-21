@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 @Stateless
-public class ZooServiceImpl implements ZooService {
+public class ZooServiceImpl implements ZooService, ZooServiceLocal {
 
     @Inject
     private DataAccess dao;
