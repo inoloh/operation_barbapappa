@@ -29,8 +29,13 @@ public class DataAccessImplementationProduction implements DataAccess {
     }
 
     @Override
-    public void insertToFreezer(Animal animal) {
-    //TODO implement insertToFreezer
+    public void insertToFreezer(int animalId) {
+
+        Animal animal = em.find(Animal.class, animalId);
+        Zone freez = em.find(Zone.class,16);
+
+        //Tabort från zon
+        //lägga till i frys
     }
 
     @Override

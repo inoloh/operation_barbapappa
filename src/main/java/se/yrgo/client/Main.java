@@ -22,8 +22,8 @@ public class Main {
         jndiProperties.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
         jndiProperties.put("jboss.naming.client.ejb.context", true);
         jndiProperties.put(Context.SECURITY_AUTHENTICATION, "simple");
-        jndiProperties.put(Context.SECURITY_PRINCIPAL, "appuser2");
-        jndiProperties.put(Context.SECURITY_CREDENTIALS, "password2!");
+        jndiProperties.put(Context.SECURITY_PRINCIPAL, "appuser3");
+        jndiProperties.put(Context.SECURITY_CREDENTIALS, "password3!");
         System.out.println(jndiProperties);
 
         Context jndi = new InitialContext(jndiProperties);
@@ -37,8 +37,12 @@ public class Main {
         service.buyAnimal(nigel);
         service.buyAnimal(esteban);
 
-        Zone flood = new Zone("Flood");
-        service.addZone(flood);
+    /*    Zone freezer = new Zone("Freezer");
+        service.addZone(freezer);*/
+
+
+       /* Zone flood = new Zone("Flood");
+        service.addZone(flood);*/
 
         // flood.addAnimals(jeff);
         // flood.addAnimals(nigel);
