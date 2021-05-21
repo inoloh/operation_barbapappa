@@ -11,19 +11,13 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import java.util.List;
 
+// Finns på denna URL: http://localhost:8080/operation_barbapappa-1.0-SNAPSHOT-war/fantastic-world/animals
 @Path("/animals")
 @Stateless
-public class HelloResource {
+public class ZooResource {
 
     @Inject
     private ZooServiceLocal service;
-
-
-//    @GET
-//    @Produces("text/plain")
-//    public String hello() {
-//        return "Welcome to Fantastic World!";
-//    }
 
     @GET
     @Produces("application/JSON")

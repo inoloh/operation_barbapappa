@@ -17,4 +17,5 @@ public interface DataAccess {
     public Animal findAnimalById(int animalId);
     public void insertZone(Zone zone);
     public void insertAnimalToZone(int animalId,int zoneId);
+
 }

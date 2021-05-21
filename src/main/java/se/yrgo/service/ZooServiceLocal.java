@@ -17,6 +17,8 @@ public interface ZooServiceLocal {
     public List<Animal> showSickAnimals();
     public Animal getAnimalById(int animalId);
     public void addZone(Zone zone);
+
+    void addAnimalToZone(int animalId, int zoneId);
     // TODO add local service for deleteAnimalFromFreezer()
     // TODO add local service for insertToFreezer()
 }

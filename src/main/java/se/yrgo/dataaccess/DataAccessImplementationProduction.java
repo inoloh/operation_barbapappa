@@ -30,14 +30,14 @@ public class DataAccessImplementationProduction implements DataAccess {
 
     @Override
     public void insertToFreezer(int animalId) {
-
+        //TODO Detta funkar sådär
+        // Funkar bara om vi anger rätt id för frysen, den ändras hela tiden...
         Animal animal = em.find(Animal.class, animalId);
-        Zone freez = em.find(Zone.class,16);
+        Zone freez = em.find(Zone.class,24);
         em.createQuery("DELETE from Zone zone where zone.listOfAnimalId = :Id ").setParameter("Id",animalId);
-     /*   freez.addAnimals(animal);
-        em.persist(freez);*/
-        //Tabort från zon
-        //lägga till i frys
+        freez.addAnimals(animal);
+        em.persist(freez);
+
     }
 
     @Override
@@ -73,4 +73,5 @@ public class DataAccessImplementationProduction implements DataAccess {
         zon.addAnimals(animal);
         em.persist(zon);
     }
+
 }
