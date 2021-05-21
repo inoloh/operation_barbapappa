@@ -50,4 +50,9 @@ public class ZooServiceImpl implements ZooService, ZooServiceLocal {
 
     @Override
     public void addZone(Zone zone) { dao.insertZone(zone); }
+
+    @Override
+    public void addAnimalToZone(int animalId, int zoneId) {
+        dao.insertAnimalToZone(animalId,zoneId);
+    }
 }
