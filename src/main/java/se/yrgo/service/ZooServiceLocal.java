@@ -3,11 +3,12 @@ package se.yrgo.service;
 import se.yrgo.domain.Animal;
 import se.yrgo.domain.Zone;
 
+import javax.ejb.Local;
 import javax.ejb.Remote;
 import java.util.List;
 
-@Remote
-public interface ZooService {
+@Local
+public interface ZooServiceLocal {
     public void executeAnimal(int animalId);
     public void removeAnimalFromFreezer(Animal animal);
     public void putInFreezer(int animalId);
@@ -18,6 +19,6 @@ public interface ZooService {
     public void addZone(Zone zone);
 
     void addAnimalToZone(int animalId, int zoneId);
-    // TODO add service for deleteAnimalFromFreezer()
-    // TODO add service for insertToFreezer()
+    // TODO add local service for deleteAnimalFromFreezer()
+    // TODO add local service for insertToFreezer()
 }

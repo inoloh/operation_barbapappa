@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 @Stateless
-public class ZooServiceImpl implements ZooService {
+public class ZooServiceImpl implements ZooService, ZooServiceLocal {
 
     @Inject
     private DataAccess dao;
@@ -26,8 +26,8 @@ public class ZooServiceImpl implements ZooService {
     }
 
     @Override
-    public void putInFreezer(Animal animal) {
-
+    public void putInFreezer(int animalId) {
+        dao.insertToFreezer(animalId);
     }
 
     @Override

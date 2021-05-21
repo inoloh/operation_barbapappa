@@ -10,11 +10,12 @@ import java.util.List;
 public interface DataAccess {
     public void deleteAnimal(int animalId);
     public void deleteAnimalFromFreezer(Animal animal);
-    public void insertToFreezer(Animal animal);
+    public void insertToFreezer(int animalId);
     public void insertAnimal(Animal animal);
     public List<Animal> findAllAnimals();
     public List<Animal> findSickAnimals();
     public Animal findAnimalById(int animalId);
     public void insertZone(Zone zone);
     public void insertAnimalToZone(int animalId,int zoneId);
+
 }
