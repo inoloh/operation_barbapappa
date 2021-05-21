@@ -3,6 +3,7 @@ package se.yrgo.service;
 import se.yrgo.dataaccess.DataAccess;
 
 import se.yrgo.domain.Animal;
+import se.yrgo.domain.Zone;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -23,7 +24,6 @@ public class ZooServiceImpl implements ZooService {
     public void removeAnimalFromFreezer(Animal animal) {
 
     }
-
 
     @Override
     public void putInFreezer(Animal animal) {
@@ -47,4 +47,7 @@ public class ZooServiceImpl implements ZooService {
     public Animal getAnimalById(int animalId) {
         return dao.findAnimalById(animalId);
     }
+
+    @Override
+    public void addZone(Zone zone) { dao.insertZone(zone); }
 }

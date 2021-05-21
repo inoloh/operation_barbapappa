@@ -1,7 +1,7 @@
 package se.yrgo.dataaccess;
 
 import se.yrgo.domain.Animal;
-import se.yrgo.domain.Employee;
+import se.yrgo.domain.Zone;
 
 import javax.ejb.Local;
 import java.util.List;
@@ -15,4 +15,5 @@ public interface DataAccess {
     public List<Animal> findAllAnimals();
     public List<Animal> findSickAnimals();
     public Animal findAnimalById(int animalId);
+    public void insertZone(Zone zone);
 }
