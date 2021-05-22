@@ -45,11 +45,11 @@ public class Main {
 //        service.buyAnimal(nigel);
 //        service.buyAnimal(esteban);
 //
-//        Zone freezer = new Zone("Freezer");
-//        service.addZone(freezer);
+        Zone freezer = new Zone("Freezer");
+        service.addZone(freezer);
 //
-//        Zone flood = new Zone("Flood");
-//        service.addZone(flood);
+        Zone flood = new Zone("Flood");
+        service.addZone(flood);
 
 //        service.addAnimalToZone(21, 24);
 //        service.addAnimalToZone(22, 24);

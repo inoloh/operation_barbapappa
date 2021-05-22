@@ -1,7 +1,9 @@
 package se.yrgo.client;
 
 import se.yrgo.dataaccess.AnimalNotFoundException;
+import se.yrgo.dataaccess.HealthNotUpdatedException;
 import se.yrgo.domain.Animal;
+import se.yrgo.domain.HealthStatus;
 import se.yrgo.service.ZooServiceLocal;
 
 import javax.ejb.Stateless;
@@ -41,7 +43,7 @@ public class ZooResource {
     @Produces("application/JSON")
     @Path("/sick")
     public List<Animal> getAllSickAnimals() {
-        //TODO Change type to Response, add errorhandling
+        //TODO Change type to Response, add errorhandling - jag tror inte Response? för då ser man ju ingenting?
         return service.showSickAnimals();
     }
 
@@ -62,6 +64,27 @@ public class ZooResource {
         } catch (AnimalNotFoundException ex) {
             return Response.status(404).build();
         }
+    }
+
+    // TODO funkar icke... por que? HALP, gjort om den till age bara för att se om det var enumet som spökade, men tror det är PUT?
+    @PUT
+    @Produces("application/JSON")
+    @Consumes("application/JSON")
+    public Response updateHealth(@QueryParam("animalid") int id, @QueryParam("status") int status){
+        try {
+        service.updateAnimalHealth(id, status);
+        return Response.ok().build();
+        } catch (HealthNotUpdatedException ex) {
+            return Response.status(404).build();
+        }
+    }
+
+    // TODO funkar icke heller, por que maria
+    @POST
+    @Path("/freezer")
+    @Consumes("application/JSON")
+    public void putAnimalInFreezer(Animal animal) {
+        service.putInFreezer(animal);
     }
 
 
