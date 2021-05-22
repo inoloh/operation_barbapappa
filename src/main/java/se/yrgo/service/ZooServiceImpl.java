@@ -17,7 +17,7 @@ public class ZooServiceImpl implements ZooService, ZooServiceLocal {
     private DataAccess dao;
 
     @Override
-    public void executeAnimal(int animalId) {
+    public void executeAnimal(int animalId) throws AnimalNotFoundException {
         dao.deleteAnimal(animalId);
     }
 

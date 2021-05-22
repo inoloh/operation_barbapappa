@@ -6,7 +6,6 @@ import se.yrgo.domain.Zone;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
-import javax.enterprise.inject.Default;
 import java.util.*;
 
 @Stateless
@@ -14,8 +13,7 @@ import java.util.*;
 public class DataAccessImplementationTest implements DataAccess {
 
     @Override
-    public void deleteAnimal(int animalId) {
-
+    public void deleteAnimal(int animalId) throws AnimalNotFoundException {
     }
 
     @Override

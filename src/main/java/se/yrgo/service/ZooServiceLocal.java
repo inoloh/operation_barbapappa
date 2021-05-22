@@ -5,12 +5,11 @@ import se.yrgo.domain.Animal;
 import se.yrgo.domain.Zone;
 
 import javax.ejb.Local;
-import javax.ejb.Remote;
 import java.util.List;
 
 @Local
 public interface ZooServiceLocal {
-    public void executeAnimal(int animalId);
+    public void executeAnimal(int animalId) throws AnimalNotFoundException;
     public void removeAnimalFromFreezer(Animal animal);
     public void putInFreezer(int animalId);
     public void buyAnimal(Animal animal);

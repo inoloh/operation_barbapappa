@@ -19,10 +19,17 @@ public class DataAccessImplementationProduction implements DataAccess {
 
 
     @Override
-    public void deleteAnimal(int animalId) {
-       Animal toKill = em.find(Animal.class, animalId);
-        em.remove(toKill);
+    public void deleteAnimal(int animalId) throws AnimalNotFoundException {
 
+        int successfulDelete = em.createQuery("delete from Animal animal where animal.id = :id")
+                    .setParameter("id", animalId).executeUpdate();
+        if (successfulDelete == 0) {
+            throw new AnimalNotFoundException();
+        }
+
+
+       /*Animal toKill = em.find(Animal.class, animalId);
+       em.remove(toKill);*/
     }
 
     @Override

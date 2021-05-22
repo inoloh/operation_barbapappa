@@ -9,7 +9,7 @@ import java.util.List;
 
 @Remote
 public interface ZooService {
-    public void executeAnimal(int animalId);
+    public void executeAnimal(int animalId) throws AnimalNotFoundException;
     public void removeAnimalFromFreezer(Animal animal);
     public void putInFreezer(int animalId);
     public void buyAnimal(Animal animal);

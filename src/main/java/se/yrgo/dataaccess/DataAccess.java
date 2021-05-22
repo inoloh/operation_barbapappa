@@ -8,7 +8,7 @@ import java.util.List;
 
 @Local
 public interface DataAccess {
-    public void deleteAnimal(int animalId);
+    public void deleteAnimal(int animalId) throws AnimalNotFoundException;
     public void deleteAnimalFromFreezer(Animal animal);
     public void insertToFreezer(int animalId);
     public void insertAnimal(Animal animal);

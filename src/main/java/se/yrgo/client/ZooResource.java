@@ -29,7 +29,6 @@ public class ZooResource {
     @Produces("application/JSON")
     @Path("{animalId}")
     public Response getById(@PathParam("animalId") int id) {
-        //TODO Change type to Response, add errorhandling
         try {
             Animal result = service.getAnimalById(id);
             return Response.ok(result).build();
@@ -54,8 +53,18 @@ public class ZooResource {
         return animal;
     }
 
+    @DELETE
+    @Path("/execute/{animalId}")
+    public Response executeAnimal(@PathParam("animalId") int id) {
+        try {
+            service.executeAnimal(id);
+            return Response.ok().build();
+        } catch (AnimalNotFoundException ex) {
+            return Response.status(404).build();
+        }
+    }
 
-    // TODO implement executeAnimal(int animalId);
+
     // TODO implement public void removeAnimalFromFreezer(Animal animal);
     // TODO implement public void putInFreezer(Animal animal);
     // TODO implement public void addZone(Zone zone);
