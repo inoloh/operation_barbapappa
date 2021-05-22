@@ -6,7 +6,9 @@ import se.yrgo.domain.Zone;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Stateless
@@ -17,10 +19,17 @@ public class DataAccessImplementationProduction implements DataAccess {
 
 
     @Override
-    public void deleteAnimal(int animalId) {
-       Animal toKill = em.find(Animal.class, animalId);
-        em.remove(toKill);
+    public void deleteAnimal(int animalId) throws AnimalNotFoundException {
+        // fick ändra lite för kodernas skull
+        int successfulDelete = em.createQuery("delete from Animal animal where animal.id = :id")
+                    .setParameter("id", animalId).executeUpdate();
+        if (successfulDelete == 0) {
+            throw new AnimalNotFoundException();
+        }
 
+
+       /*Animal toKill = em.find(Animal.class, animalId);
+       em.remove(toKill);*/
     }
 
     @Override
@@ -29,14 +38,21 @@ public class DataAccessImplementationProduction implements DataAccess {
     }
 
     @Override
-    public void insertToFreezer(int animalId) {
+    public void insertToFreezer(Animal animal) {
+
+        // TODO försökte något här som inte heller funkade :(
+        Zone freezer = em.find(Zone.class, 26);
+        /*Animal animal = em.find(Animal.class, animalId);*/
+        freezer.addAnimals(animal);
+        em.persist(freezer);
+
         //TODO Detta funkar sådär
         // Funkar bara om vi anger rätt id för frysen, den ändras hela tiden...
+        /*Zone freez = em.find(Zone.class,24);
         Animal animal = em.find(Animal.class, animalId);
-        Zone freez = em.find(Zone.class,24);
         em.createQuery("DELETE from Zone zone where zone.listOfAnimalId = :Id ").setParameter("Id",animalId);
         freez.addAnimals(animal);
-        em.persist(freez);
+        em.persist(freez);*/
 
     }
 
@@ -57,8 +73,16 @@ public class DataAccessImplementationProduction implements DataAccess {
     }
 
     @Override
-    public Animal findAnimalById(int animalId) {
-        return em.find(Animal.class, animalId);
+    public Animal findAnimalById(int animalId) throws AnimalNotFoundException {
+        try {
+            // var tvungen att ändra här för att få rätt 404 kod att funka, med find blir allt 200..
+            Query q = em.createQuery("select animal from Animal animal where animal.id = :id");
+            q.setParameter("id", animalId);
+            return (Animal) q.getSingleResult();
+            /*return em.find(Animal.class, animalId);*/
+        } catch (NoResultException ex) {
+            throw new AnimalNotFoundException();
+        }
     }
 
     @Override
@@ -68,10 +92,28 @@ public class DataAccessImplementationProduction implements DataAccess {
 
     @Override
     public void insertAnimalToZone(int animalId, int zoneId) {
-        Animal animal = em.find(Animal.class, animalId );
+        Animal animal = em.find(Animal.class, animalId);
         Zone zon = em.find(Zone.class,zoneId);
         zon.addAnimals(animal);
         em.persist(zon);
+    }
+
+    // TODO fungerar ej som den ska
+    @Override
+    public Animal updateHealthstatus(int animalid, int status) throws HealthNotUpdatedException {
+        Query q = em.createQuery("update Animal animal set animal.healthStatus = :status where animal.id = :id");
+        q.setParameter("status", status);
+        q.setParameter("id", animalid);
+        int update = q.executeUpdate();
+
+        if (update == 0) {
+            throw new HealthNotUpdatedException();
+        } else {
+            return (Animal) q.getSingleResult();
+        }
+
+
+       // TODO lägg till felhantering här
     }
 
 }

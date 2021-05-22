@@ -1,12 +1,12 @@
 package se.yrgo.dataaccess;
 
+import se.yrgo.client.HelloApplication;
 import se.yrgo.domain.Animal;
 import se.yrgo.domain.HealthStatus;
 import se.yrgo.domain.Zone;
 
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
-import javax.enterprise.inject.Default;
 import java.util.*;
 
 @Stateless
@@ -14,8 +14,7 @@ import java.util.*;
 public class DataAccessImplementationTest implements DataAccess {
 
     @Override
-    public void deleteAnimal(int animalId) {
-
+    public void deleteAnimal(int animalId) throws AnimalNotFoundException {
     }
 
     @Override
@@ -24,7 +23,7 @@ public class DataAccessImplementationTest implements DataAccess {
     }
 
     @Override
-    public void insertToFreezer(int animalId) {
+    public void insertToFreezer(Animal animal) {
 
     }
 
@@ -51,7 +50,7 @@ public class DataAccessImplementationTest implements DataAccess {
     }
 
     @Override
-    public Animal findAnimalById(int animalId) {
+    public Animal findAnimalById(int animalId) throws AnimalNotFoundException {
         return null;
     }
 
@@ -62,6 +61,11 @@ public class DataAccessImplementationTest implements DataAccess {
     @Override
     public void insertAnimalToZone(int animalId, int zoneId) {
 
+    }
+
+    @Override
+    public Animal updateHealthstatus(int animalId, int status) throws HealthNotUpdatedException {
+        return null;
     }
 
 }
