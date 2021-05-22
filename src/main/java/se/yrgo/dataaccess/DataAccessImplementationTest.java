@@ -51,7 +51,7 @@ public class DataAccessImplementationTest implements DataAccess {
     }
 
     @Override
-    public Animal findAnimalById(int animalId) {
+    public Animal findAnimalById(int animalId) throws AnimalNotFoundException {
         return null;
     }
 

@@ -6,7 +6,9 @@ import se.yrgo.domain.Zone;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Stateless
@@ -57,8 +59,16 @@ public class DataAccessImplementationProduction implements DataAccess {
     }
 
     @Override
-    public Animal findAnimalById(int animalId) {
-        return em.find(Animal.class, animalId);
+    public Animal findAnimalById(int animalId) throws AnimalNotFoundException {
+        try {
+            // var tvungen att ändra här för att få rätt 404 kod att funka, med find blir allt 200..
+            Query q = em.createQuery("select animal from Animal animal where animal.id = :id");
+            q.setParameter("id", animalId);
+            return (Animal) q.getSingleResult();
+            /*return em.find(Animal.class, animalId);*/
+        } catch (NoResultException ex) {
+            throw new AnimalNotFoundException();
+        }
     }
 
     @Override

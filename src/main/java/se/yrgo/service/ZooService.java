@@ -1,5 +1,6 @@
 package se.yrgo.service;
 
+import se.yrgo.dataaccess.AnimalNotFoundException;
 import se.yrgo.domain.Animal;
 import se.yrgo.domain.Zone;
 
@@ -14,7 +15,7 @@ public interface ZooService {
     public void buyAnimal(Animal animal);
     public List<Animal> showAllAnimals();
     public List<Animal> showSickAnimals();
-    public Animal getAnimalById(int animalId);
+    public Animal getAnimalById(int animalId) throws AnimalNotFoundException;
     public void addZone(Zone zone);
 
     void addAnimalToZone(int animalId, int zoneId);

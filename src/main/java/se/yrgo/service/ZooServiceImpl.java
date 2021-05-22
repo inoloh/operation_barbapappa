@@ -1,5 +1,6 @@
 package se.yrgo.service;
 
+import se.yrgo.dataaccess.AnimalNotFoundException;
 import se.yrgo.dataaccess.DataAccess;
 
 import se.yrgo.domain.Animal;
@@ -44,7 +45,7 @@ public class ZooServiceImpl implements ZooService, ZooServiceLocal {
     }
 
     @Override
-    public Animal getAnimalById(int animalId) {
+    public Animal getAnimalById(int animalId) throws AnimalNotFoundException {
         return dao.findAnimalById(animalId);
     }
 
