@@ -6,7 +6,6 @@ import se.yrgo.dataaccess.DataAccess;
 import se.yrgo.dataaccess.HealthNotUpdatedException;
 import se.yrgo.domain.Animal;
 import se.yrgo.domain.HealthStatus;
-import se.yrgo.domain.Zone;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -28,23 +27,13 @@ public class ZooServiceImpl implements ZooService, ZooServiceLocal {
         dao.deleteAnimal(animalId);
     }
 
-    @Override
-    public void buyAnimal(Animal animal) throws AnimalNotFoundException {
-    public void removeAnimalFromFreezer(Animal animal) {
-
-    }
-
-    @Override
-    public void putInFreezer(Animal animal) {
-        dao.insertToFreezer(animal);
-    }
 
     /** Buys an animal to the Zoo
      *
      * @param animal it takes an animal to buy an animal.
      */
     @Override
-    public void buyAnimal(Animal animal) {
+    public void buyAnimal(Animal animal) throws AnimalNotFoundException {
     dao.insertAnimal(animal);
     }
 
@@ -75,8 +64,6 @@ public class ZooServiceImpl implements ZooService, ZooServiceLocal {
         return dao.findAnimalById(animalId);
     }
 
-    @Override
-    public void addZone(Zone zone) { dao.insertZone(zone); }
 
     /** Change the health status of a specific animal.
      *
