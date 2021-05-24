@@ -80,12 +80,15 @@ public class ZooResource {
         }
     }
 
-    // TODO lite större felhantering a la nahid workshop
     @PUT
+    @Path("/updatehealth")
     @Produces("application/JSON")
     @Consumes("application/JSON")
     public Response updateHealth(@QueryParam("animalid") int id, @QueryParam("status") HealthStatus status) {
         try {
+            if (id == 0 || status == null) {
+                return Response.status(404).build();
+            }
             service.updateAnimalHealth(id, status);
             return Response.ok().build();
         } catch (HealthNotUpdatedException ex) {
