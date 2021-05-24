@@ -11,6 +11,10 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.List;
 
+/**
+ * @author Rasmus
+ * @mobprogrammers Lukas, Henrik, Helena
+ */
 @Stateless
 public class ZooServiceImpl implements ZooService, ZooServiceLocal {
 

@@ -10,7 +10,10 @@ import javax.naming.NamingException;
 import java.util.List;
 import java.util.Properties;
 
-
+/**
+ * @author Helena
+ * @mobprogrammers Rasmus, Lukas, Henrik
+ */
 public class Main {
     public static void main(String[] args) throws NamingException, AnimalNotFoundException {
         Properties jndiProperties = new Properties();

@@ -11,6 +11,8 @@ import java.util.*;
 /**
  * Implements the DataAccess interface but does not communicate with the database,
  * uses java objects to test logic.
+ * @author Rasmus
+ * @mobprogrammers Henrik, Helena, Lukas
  */
 @Stateless
 @Alternative

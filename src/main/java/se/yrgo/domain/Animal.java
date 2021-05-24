@@ -7,7 +7,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /** This is a animal class
- *
+ * @author Lukas
+ * @mobprogrammers Henrik, Helena, Rasmus
  */
 @Entity
 public class Animal implements Serializable {

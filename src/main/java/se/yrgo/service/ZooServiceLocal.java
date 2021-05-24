@@ -9,6 +9,10 @@ import se.yrgo.domain.Zone;
 import javax.ejb.Local;
 import java.util.List;
 
+/**
+ * @author Lukas
+ * @mobprogrammers Helena, Henrik, Rasmus
+ */
 @Local
 public interface ZooServiceLocal {
     public void executeAnimal(int animalId) throws AnimalNotFoundException;
