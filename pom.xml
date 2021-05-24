@@ -48,7 +48,7 @@
             <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
-        </dependencies>
+    </dependencies>
 
 
     <build>
@@ -62,35 +62,17 @@
                     <classifier>war</classifier>
                 </configuration>
             </plugin>
-            <!-- <plugin>
-                 <groupId>org.apache.maven.plugins</groupId>
-                 <artifactId>maven-javadoc-plugin</artifactId>
-                 <version>3.2.0</version>
-                 <configuration>
-                     <classifier>jar</classifier>
-                     <outputDirectory>docker</outputDirectory>
-                 </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
+                <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
                     <classifier>jar</classifier>
-                    <outputDirectory>docker</outputDirectory>
+                    <outputDirectory>docker/javadoc</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>package-jar</id>
-                        <phase>package</phase>
+                        <id>attach-javadocs</id>
                         <goals>
                             <goal>jar</goal>
                         </goals>
