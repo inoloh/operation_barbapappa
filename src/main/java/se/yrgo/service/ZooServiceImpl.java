@@ -29,6 +29,7 @@ public class ZooServiceImpl implements ZooService, ZooServiceLocal {
     }
 
     @Override
+    public void buyAnimal(Animal animal) throws AnimalNotFoundException {
     public void removeAnimalFromFreezer(Animal animal) {
 
     }
@@ -52,14 +53,14 @@ public class ZooServiceImpl implements ZooService, ZooServiceLocal {
      * @return a list of all the Animals at the Zoo.
      */
     @Override
-    public List<Animal> showAllAnimals() { return dao.findAllAnimals(); }
+    public List<Animal> showAllAnimals() throws AnimalNotFoundException { return dao.findAllAnimals(); }
 
     /** All the sick animals at the Zoo.
      *
      * @return a list of all the sick Animals at the Zoo.
      */
     @Override
-    public List<Animal> showSickAnimals() {
+    public List<Animal> showSickAnimals() throws AnimalNotFoundException {
         return dao.findSickAnimals();
     }
 
@@ -88,8 +89,4 @@ public class ZooServiceImpl implements ZooService, ZooServiceLocal {
         dao.updateHealthstatus(animalId, status);
     }
 
-    @Override
-    public void addAnimalToZone(int animalId, int zoneId) {
-        dao.insertAnimalToZone(animalId, zoneId);
-    }
 }

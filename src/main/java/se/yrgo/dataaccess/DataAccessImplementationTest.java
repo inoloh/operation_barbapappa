@@ -17,16 +17,6 @@ public class DataAccessImplementationTest implements DataAccess {
     }
 
     @Override
-    public void deleteAnimalFromFreezer(Animal animal) {
-
-    }
-
-    @Override
-    public void insertToFreezer(Animal animal) {
-
-    }
-
-    @Override
     public void insertAnimal(Animal animal) {
 
     }
@@ -51,15 +41,6 @@ public class DataAccessImplementationTest implements DataAccess {
     @Override
     public Animal findAnimalById(int animalId) throws AnimalNotFoundException {
         return null;
-    }
-
-    @Override
-    public void insertZone(Zone zone) {
-    }
-
-    @Override
-    public void insertAnimalToZone(int animalId, int zoneId) {
-
     }
 
     @Override

@@ -20,11 +20,16 @@ public class ZooResource {
     @Inject
     private ZooServiceLocal service;
 
+    //TODO Change type to Response, add errorhandling
     @GET
     @Produces("application/JSON")
-    public List<Animal> getAllAnimals() {
-        //TODO Change type to Response, add errorhandling
-        return service.showAllAnimals();
+    public Response getAllAnimals() {
+        try {
+            List<Animal> result = service.showAllAnimals();
+            return Response.ok(result).build();
+        } catch (AnimalNotFoundException ex) {
+            return Response.status(404).build();
+        }
     }
 
     @GET
@@ -39,20 +44,29 @@ public class ZooResource {
         }
     }
 
+    //TODO Change type to Response, add errorhandling
     @GET
     @Produces("application/JSON")
     @Path("/sick")
-    public List<Animal> getAllSickAnimals() {
-        //TODO Change type to Response, add errorhandling - jag tror inte Response? för då ser man ju ingenting?
-        return service.showSickAnimals();
+    public Response getAllSickAnimals() {
+        try {
+            List<Animal> result = service.showSickAnimals();
+            return Response.ok(result).build();
+        } catch (AnimalNotFoundException ex) {
+            return Response.status(404).build();
+        }
     }
 
     @POST
     @Produces("application/JSON")
     @Consumes("application/JSON")
-    public Animal buyAnimal(Animal animal) {
-        service.buyAnimal(animal);
-        return animal;
+    public Response buyAnimal(Animal animal) {
+        try {
+            service.buyAnimal(animal);
+            return Response.ok().build();
+        } catch (AnimalNotFoundException ex) {
+            return Response.status(404).build();
+        }
     }
 
     @DELETE
@@ -66,12 +80,15 @@ public class ZooResource {
         }
     }
 
-    // TODO funkar icke... por que? HALP, gjort om den till age bara för att se om det var enumet som spökade, men tror det är PUT?
     @PUT
+    @Path("/updatehealth")
     @Produces("application/JSON")
     @Consumes("application/JSON")
     public Response updateHealth(@QueryParam("animalid") int id, @QueryParam("status") HealthStatus status) {
         try {
+            if (id == 0 || status == null) {
+                return Response.status(404).build();
+            }
             service.updateAnimalHealth(id, status);
             return Response.ok().build();
         } catch (HealthNotUpdatedException ex) {
@@ -79,18 +96,5 @@ public class ZooResource {
         }
     }
 
-
-    // TODO funkar icke heller, por que maria
-    @POST
-    @Path("/freezer")
-    @Consumes("application/JSON")
-    public void putAnimalInFreezer(Animal animal) {
-        service.putInFreezer(animal);
-    }
-
-
-    // TODO implement public void removeAnimalFromFreezer(Animal animal);
-    // TODO implement public void putInFreezer(Animal animal);
-    // TODO implement public void addZone(Zone zone);
 
 }
