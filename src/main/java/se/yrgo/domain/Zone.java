@@ -8,16 +8,26 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Henrik
+ * @mobprogrammers Lukas, Helena, Rasmus
+ */
 @Entity
 public class Zone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter @Setter private int id;
-    @Getter @Setter private String name;
+    @Getter
+    @Setter
+    private int id;
+    @Getter
+    @Setter
+    private String name;
 
-    @OneToMany( targetEntity=Animal.class )
+    @OneToMany(targetEntity = Animal.class)
     @JoinColumn(name = "Zone_FK")
-    @Getter @Setter private List<Animal> listOfAnimals;
+    @Getter
+    @Setter
+    private List<Animal> listOfAnimals;
 
     public Zone() {
     }

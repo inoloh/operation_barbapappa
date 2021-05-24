@@ -9,6 +9,8 @@ import java.util.List;
 
 /** Data access layer
  * Contains methods that communicates directly with the database
+ * @author Henrik
+ * @mobprogrammers Helena, Rasmus, Lukas
  */
 @Local
 public interface DataAccess {

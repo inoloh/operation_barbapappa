@@ -14,6 +14,8 @@ import java.util.List;
 
 /**
  * Implements the DataAccess interface and communicates directly with the database.
+ * @author Helena
+ * @mobprogrammers Henrik, Rasmus, Lukas
  */
 @Stateless
 @Default

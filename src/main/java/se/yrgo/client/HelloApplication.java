@@ -8,6 +8,11 @@ import javax.ws.rs.core.Application;
 
 // Detta ersätter /webservices/* som vi tidigare haft i web.xml
 // Alla Paths i HelloRecourse börjar med url:en nedan,  /fantastic-world
+
+/**
+ * @author Henrik
+ * @mobprogrammers Rasmus, Lukas, Helena
+ */
 @ApplicationPath("/fantastic-world")
 public class HelloApplication extends Application {
 

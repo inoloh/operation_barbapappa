@@ -9,6 +9,10 @@ import se.yrgo.domain.Zone;
 import javax.ejb.Remote;
 import java.util.List;
 
+/**
+ * @author Helena
+ * @mobprogrammers Lukas, Henrik, Rasmus
+ */
 @Remote
 public interface ZooService {
     /** Execute and removes an specific animal.

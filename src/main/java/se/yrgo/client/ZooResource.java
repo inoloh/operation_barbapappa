@@ -13,6 +13,11 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 // Finns på denna URL: http://localhost:8080/operation_barbapappa-1.0-SNAPSHOT-war/fantastic-world/animals
+
+/**
+ * @author Rasmus
+ * @mobprogrammers Henrik, Lukas, Helena
+ */
 @Path("/animals")
 @Stateless
 public class ZooResource {
