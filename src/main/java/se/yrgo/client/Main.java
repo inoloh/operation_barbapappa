@@ -2,8 +2,6 @@ package se.yrgo.client;
 
 import se.yrgo.dataaccess.AnimalNotFoundException;
 import se.yrgo.domain.Animal;
-import se.yrgo.domain.HealthStatus;
-import se.yrgo.domain.Zone;
 import se.yrgo.service.ZooService;
 
 import javax.naming.Context;
@@ -34,7 +32,7 @@ public class Main {
 //        Animal jeff = new Animal("Jeff", 4, "Hawaiian monk seal", HealthStatus.SICK, "1984-04-12");
 //        Animal nigel = new Animal("Nigel", 4, "Hawaiian monk seal", HealthStatus.HEALTHY, "1984-04-12");
 //        Animal esteban = new Animal("Esteban", 4, "Hawaiian monk seal", HealthStatus.SICK, "1984-04-12");
-//
+
         List<Animal> allAnimals = service.showAllAnimals();
 
         System.out.println("All animals:");
@@ -46,13 +44,10 @@ public class Main {
 //        service.buyAnimal(nigel);
 //        service.buyAnimal(esteban);
 
-//        service.addAnimalToZone(21, 24);
-//        service.addAnimalToZone(22, 24);
-//        service.addAnimalToZone(23, 25);
 
-//
+
 //        List<Animal> sickAnimals = service.showSickAnimals();
-//
+
 //        System.out.println("All the sick animals:");
 //        for (Animal animal : sickAnimals) {
 //            System.out.println(animal);
