@@ -23,7 +23,7 @@ public class ZooResource {
     @GET
     @Produces("application/JSON")
     public List<Animal> getAllAnimals() {
-    //TODO Change type to Response, add errorhandling
+        //TODO Change type to Response, add errorhandling
         return service.showAllAnimals();
     }
 
@@ -68,17 +68,17 @@ public class ZooResource {
 
     // TODO funkar icke... por que? HALP, gjort om den till age bara för att se om det var enumet som spökade, men tror det är PUT?
     @PUT
-    @Path("{animalid}")
     @Produces("application/JSON")
     @Consumes("application/JSON")
-    public Response updateHealth(@PathParam("animalid") int id, @QueryParam("status") HealthStatus status){
+    public Response updateHealth(@QueryParam("animalid") int id, @QueryParam("status") HealthStatus status) {
         try {
-        service.updateAnimalHealth(id, status);
-        return Response.ok().build();
+            service.updateAnimalHealth(id, status);
+            return Response.ok().build();
         } catch (HealthNotUpdatedException ex) {
             return Response.status(404).build();
         }
     }
+
 
     // TODO funkar icke heller, por que maria
     @POST
