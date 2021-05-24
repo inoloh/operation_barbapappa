@@ -11,6 +11,4 @@
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
-    <!--<persistence-unit name="default">
-    </persistence-unit>-->
 </persistence>

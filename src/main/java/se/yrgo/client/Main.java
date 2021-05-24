@@ -50,12 +50,6 @@ public class Main {
 //        service.addAnimalToZone(22, 24);
 //        service.addAnimalToZone(23, 25);
 
-//        flood.addAnimals(jeff);
-//        flood.addAnimals(nigel);
-//        flood.addAnimals(esteban);
-//
-//        System.out.println("Put Jeff in the freezer");
-//        service.putInFreezer(11);
 //
 //        List<Animal> sickAnimals = service.showSickAnimals();
 //
