@@ -5,8 +5,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
+/** This is a animal class
+ *
+ */
 @Entity
 public class Animal implements Serializable {
 

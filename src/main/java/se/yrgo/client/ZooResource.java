@@ -19,8 +19,7 @@ public class ZooResource {
 
     @Inject
     private ZooServiceLocal service;
-
-    //TODO Change type to Response, add errorhandling
+    
     @GET
     @Produces("application/JSON")
     public Response getAllAnimals() {
@@ -44,7 +43,6 @@ public class ZooResource {
         }
     }
 
-    //TODO Change type to Response, add errorhandling
     @GET
     @Produces("application/JSON")
     @Path("/sick")

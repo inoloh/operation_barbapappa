@@ -62,21 +62,23 @@
                     <classifier>war</classifier>
                 </configuration>
             </plugin>
- <!--           <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <release>11</release>  &lt;!&ndash;or <release>10</release>&ndash;&gt;
-                </configuration>
-            </plugin>-->
-            <!--            <plugin>
-                            <artifactId>maven-compiler-plugin</artifactId>
-                            &lt;!&ndash;<configuration>
-                                <source>1.8</source> &lt;!&ndash; stod 1.8 här innan&ndash;&gt;
-                                <target>1.8</target>
-                            </configuration>&ndash;&gt;
-                        </plugin>-->
+            <!-- <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-javadoc-plugin</artifactId>
+                 <version>3.2.0</version>
+                 <configuration>
+                     <classifier>jar</classifier>
+                     <outputDirectory>docker</outputDirectory>
+                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -95,11 +97,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--            <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-jar-plugin</artifactId>
-                            <version>3.2.0</version>
-                        </plugin>-->
         </plugins>
     </build>
 </project>
