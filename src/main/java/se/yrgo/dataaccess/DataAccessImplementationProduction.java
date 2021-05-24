@@ -12,6 +12,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
+/**
+ * Implements the DataAccess interface and communicates directly with the database.
+ */
 @Stateless
 @Default
 public class DataAccessImplementationProduction implements DataAccess {
