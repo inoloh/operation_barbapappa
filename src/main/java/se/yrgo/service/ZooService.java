@@ -12,16 +12,10 @@ import java.util.List;
 @Remote
 public interface ZooService {
     public void executeAnimal(int animalId) throws AnimalNotFoundException;
-    public void removeAnimalFromFreezer(Animal animal);
-    public void putInFreezer(int animalid) throws AnimalNotFoundException;
-    public void buyAnimal(Animal animal);
-    public List<Animal> showAllAnimals();
-    public List<Animal> showSickAnimals();
+    public void buyAnimal(Animal animal) throws AnimalNotFoundException;
+    public List<Animal> showAllAnimals() throws AnimalNotFoundException;
+    public List<Animal> showSickAnimals() throws AnimalNotFoundException;
     public Animal getAnimalById(int animalId) throws AnimalNotFoundException;
-    public void addZone(Zone zone);
     public void updateAnimalHealth(int animalId, HealthStatus status) throws HealthNotUpdatedException;
 
-    void addAnimalToZone(int animalId, int zoneId);
-    // TODO add service for deleteAnimalFromFreezer()
-    // TODO add service for insertToFreezer()
 }

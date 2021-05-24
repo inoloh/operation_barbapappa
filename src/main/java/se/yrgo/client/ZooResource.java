@@ -23,8 +23,13 @@ public class ZooResource {
     //TODO Change type to Response, add errorhandling
     @GET
     @Produces("application/JSON")
-    public List<Animal> getAllAnimals() {
-        return service.showAllAnimals();
+    public Response getAllAnimals() {
+        try {
+            List<Animal> result = service.showAllAnimals();
+            return Response.ok(result).build();
+        } catch (AnimalNotFoundException ex) {
+            return Response.status(404).build();
+        }
     }
 
     @GET
@@ -43,17 +48,25 @@ public class ZooResource {
     @GET
     @Produces("application/JSON")
     @Path("/sick")
-    public List<Animal> getAllSickAnimals() {
-        return service.showSickAnimals();
+    public Response getAllSickAnimals() {
+        try {
+            List<Animal> result = service.showSickAnimals();
+            return Response.ok(result).build();
+        } catch (AnimalNotFoundException ex) {
+            return Response.status(404).build();
+        }
     }
 
     @POST
     @Produces("application/JSON")
     @Consumes("application/JSON")
-    public Animal buyAnimal(Animal animal) {
-        // TODO response erroehandlervbgd
-        service.buyAnimal(animal);
-        return animal;
+    public Response buyAnimal(Animal animal) {
+        try {
+            service.buyAnimal(animal);
+            return Response.ok().build();
+        } catch (AnimalNotFoundException ex) {
+            return Response.status(404).build();
+        }
     }
 
     @DELETE
@@ -79,7 +92,6 @@ public class ZooResource {
             return Response.status(404).build();
         }
     }
-
 
 
 }
