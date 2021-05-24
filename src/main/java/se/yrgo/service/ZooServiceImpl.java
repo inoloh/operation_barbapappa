@@ -55,8 +55,8 @@ public class ZooServiceImpl implements ZooService, ZooServiceLocal {
     public void addZone(Zone zone) { dao.insertZone(zone); }
 
     @Override
-    public Animal updateAnimalHealth(int animalId, int status) throws HealthNotUpdatedException {
-        return dao.updateHealthstatus(animalId, status);
+    public void updateAnimalHealth(int animalId, HealthStatus status) throws HealthNotUpdatedException {
+        dao.updateHealthstatus(animalId, status);
     }
 
     @Override

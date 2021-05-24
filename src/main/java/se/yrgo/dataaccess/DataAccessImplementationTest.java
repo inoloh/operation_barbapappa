@@ -1,6 +1,5 @@
 package se.yrgo.dataaccess;
 
-import se.yrgo.client.HelloApplication;
 import se.yrgo.domain.Animal;
 import se.yrgo.domain.HealthStatus;
 import se.yrgo.domain.Zone;
@@ -64,8 +63,7 @@ public class DataAccessImplementationTest implements DataAccess {
     }
 
     @Override
-    public Animal updateHealthstatus(int animalId, int status) throws HealthNotUpdatedException {
-        return null;
+    public void updateHealthstatus(int animalId, HealthStatus status) throws HealthNotUpdatedException {
     }
 
 }

@@ -18,6 +18,6 @@ public interface DataAccess {
     public Animal findAnimalById(int animalId) throws AnimalNotFoundException;
     public void insertZone(Zone zone);
     public void insertAnimalToZone(int animalId,int zoneId);
-    public Animal updateHealthstatus(int animalId, int status) throws HealthNotUpdatedException;
+    public void updateHealthstatus(int animalId, HealthStatus status) throws HealthNotUpdatedException;
 
 }

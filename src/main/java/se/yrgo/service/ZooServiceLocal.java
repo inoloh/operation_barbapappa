@@ -19,7 +19,7 @@ public interface ZooServiceLocal {
     public List<Animal> showSickAnimals();
     public Animal getAnimalById(int animalId) throws AnimalNotFoundException;
     public void addZone(Zone zone);
-    public Animal updateAnimalHealth(int animalId, int status) throws HealthNotUpdatedException;
+    public void updateAnimalHealth(int animalId, HealthStatus status) throws HealthNotUpdatedException;
 
     void addAnimalToZone(int animalId, int zoneId);
     // TODO add local service for deleteAnimalFromFreezer()

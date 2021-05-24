@@ -1,6 +1,7 @@
 package se.yrgo.dataaccess;
 
 import se.yrgo.domain.Animal;
+import se.yrgo.domain.HealthStatus;
 import se.yrgo.domain.Zone;
 
 import javax.ejb.Stateless;
@@ -100,17 +101,26 @@ public class DataAccessImplementationProduction implements DataAccess {
 
     // TODO fungerar ej som den ska
     @Override
-    public Animal updateHealthstatus(int animalid, int status) throws HealthNotUpdatedException {
-        Query q = em.createQuery("update Animal animal set animal.healthStatus = :status where animal.id = :id");
-        q.setParameter("status", status);
-        q.setParameter("id", animalid);
-        int update = q.executeUpdate();
+    public void updateHealthstatus(int animalid, HealthStatus status) throws HealthNotUpdatedException {
+        try {
+        Animal animal = findAnimalById(animalid);
+        animal.setHealthStatus(status);
 
-        if (update == 0) {
+        } catch (AnimalNotFoundException ex) {
+            throw new HealthNotUpdatedException();
+        }
+        /*Query q = em.createQuery("update Animal animal set animal.healthStatus = :status where animal.id = :id");
+        q.setParameter("status", status);
+        q.setParameter("id", animalid);*/
+        /*int update = q.executeUpdate();*/
+
+        /*if (update == 0) {
             throw new HealthNotUpdatedException();
         } else {
-            return (Animal) q.getSingleResult();
-        }
+            Query select = em.createQuery("select animal from Animal animal where animal.id = :id");
+            select.setParameter("id", animalid);
+            return (Animal) select.getSingleResult();
+        }*/
 
 
        // TODO lägg till felhantering här

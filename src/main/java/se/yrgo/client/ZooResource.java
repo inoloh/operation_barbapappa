@@ -68,9 +68,10 @@ public class ZooResource {
 
     // TODO funkar icke... por que? HALP, gjort om den till age bara för att se om det var enumet som spökade, men tror det är PUT?
     @PUT
+    @Path("{animalid}")
     @Produces("application/JSON")
     @Consumes("application/JSON")
-    public Response updateHealth(@QueryParam("animalid") int id, @QueryParam("status") int status){
+    public Response updateHealth(@PathParam("animalid") int id, @QueryParam("status") HealthStatus status){
         try {
         service.updateAnimalHealth(id, status);
         return Response.ok().build();
