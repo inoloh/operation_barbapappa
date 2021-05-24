@@ -21,39 +21,21 @@ public class DataAccessImplementationProduction implements DataAccess {
 
     @Override
     public void deleteAnimal(int animalId) throws AnimalNotFoundException {
-        // fick ändra lite för kodernas skull
         int successfulDelete = em.createQuery("delete from Animal animal where animal.id = :id")
                     .setParameter("id", animalId).executeUpdate();
         if (successfulDelete == 0) {
             throw new AnimalNotFoundException();
         }
 
-
-       /*Animal toKill = em.find(Animal.class, animalId);
-       em.remove(toKill);*/
     }
 
     @Override
-    public void deleteAnimalFromFreezer(Animal animal) {
-    // TODO implement deleteAnimalFromFreezer
-    }
+    public void insertToFreezer(int animalid) throws AnimalNotFoundException {
 
-    @Override
-    public void insertToFreezer(Animal animal) {
-
-        // TODO försökte något här som inte heller funkade :(
+        Animal animal = findAnimalById(animalid);
         Zone freezer = em.find(Zone.class, 26);
-        /*Animal animal = em.find(Animal.class, animalId);*/
         freezer.addAnimals(animal);
         em.persist(freezer);
-
-        //TODO Detta funkar sådär
-        // Funkar bara om vi anger rätt id för frysen, den ändras hela tiden...
-        /*Zone freez = em.find(Zone.class,24);
-        Animal animal = em.find(Animal.class, animalId);
-        em.createQuery("DELETE from Zone zone where zone.listOfAnimalId = :Id ").setParameter("Id",animalId);
-        freez.addAnimals(animal);
-        em.persist(freez);*/
 
     }
 

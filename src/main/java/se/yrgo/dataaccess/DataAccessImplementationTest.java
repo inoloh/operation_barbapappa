@@ -22,7 +22,7 @@ public class DataAccessImplementationTest implements DataAccess {
     }
 
     @Override
-    public void insertToFreezer(Animal animal) {
+    public void insertToFreezer(int animalid) throws AnimalNotFoundException {
 
     }
 

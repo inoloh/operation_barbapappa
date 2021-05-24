@@ -20,10 +20,10 @@ public class ZooResource {
     @Inject
     private ZooServiceLocal service;
 
+    //TODO Change type to Response, add errorhandling
     @GET
     @Produces("application/JSON")
     public List<Animal> getAllAnimals() {
-        //TODO Change type to Response, add errorhandling
         return service.showAllAnimals();
     }
 
@@ -39,11 +39,11 @@ public class ZooResource {
         }
     }
 
+    //TODO Change type to Response, add errorhandling
     @GET
     @Produces("application/JSON")
     @Path("/sick")
     public List<Animal> getAllSickAnimals() {
-        //TODO Change type to Response, add errorhandling - jag tror inte Response? för då ser man ju ingenting?
         return service.showSickAnimals();
     }
 
@@ -51,6 +51,7 @@ public class ZooResource {
     @Produces("application/JSON")
     @Consumes("application/JSON")
     public Animal buyAnimal(Animal animal) {
+        // TODO response erroehandlervbgd
         service.buyAnimal(animal);
         return animal;
     }
@@ -66,7 +67,7 @@ public class ZooResource {
         }
     }
 
-    // TODO funkar icke... por que? HALP, gjort om den till age bara för att se om det var enumet som spökade, men tror det är PUT?
+    // TODO lite större felhantering a la nahid workshop
     @PUT
     @Produces("application/JSON")
     @Consumes("application/JSON")
@@ -80,17 +81,5 @@ public class ZooResource {
     }
 
 
-    // TODO funkar icke heller, por que maria
-    @POST
-    @Path("/freezer")
-    @Consumes("application/JSON")
-    public void putAnimalInFreezer(Animal animal) {
-        service.putInFreezer(animal);
-    }
-
-
-    // TODO implement public void removeAnimalFromFreezer(Animal animal);
-    // TODO implement public void putInFreezer(Animal animal);
-    // TODO implement public void addZone(Zone zone);
 
 }
