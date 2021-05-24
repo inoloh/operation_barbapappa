@@ -1,5 +1,6 @@
 package se.yrgo.client;
 
+import se.yrgo.dataaccess.AnimalNotFoundException;
 import se.yrgo.domain.Animal;
 import se.yrgo.domain.HealthStatus;
 import se.yrgo.domain.Zone;
@@ -13,7 +14,7 @@ import java.util.Properties;
 
 
 public class Main {
-    public static void main(String[] args) throws NamingException {
+    public static void main(String[] args) throws NamingException, AnimalNotFoundException {
         Properties jndiProperties = new Properties();
 
         jndiProperties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
@@ -44,12 +45,6 @@ public class Main {
 //        service.buyAnimal(jeff);
 //        service.buyAnimal(nigel);
 //        service.buyAnimal(esteban);
-//
-        Zone freezer = new Zone("Freezer");
-        service.addZone(freezer);
-//
-        Zone flood = new Zone("Flood");
-        service.addZone(flood);
 
 //        service.addAnimalToZone(21, 24);
 //        service.addAnimalToZone(22, 24);
