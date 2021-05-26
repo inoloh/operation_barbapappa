@@ -16,7 +16,10 @@ docker:
 
 --parameters:
 
- provides a Json response with all the animals In the database.
+provides a Json response with all the animals In the database.
+  http://localhost:8080/operation_barbapappa-1.0-SNAPSHOT-war/fantastic-world/animals
+  
+provides a Json response with the animal with id <id>.
   http://localhost:8080/operation_barbapappa-1.0-SNAPSHOT-war/fantastic-world/animals/<id>
 
 
